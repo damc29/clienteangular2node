@@ -1,0 +1,24 @@
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Estado</th>
+        <th class="text-right">Acciones</th>
+    </tr>
+    <tr *ngFor="let servicio of servicios; let i = index">
+        <td class="text-left">
+            {{servicio.id}}
+        </td>
+        <td class="text-left">
+            {{servicio.nombre}}
+        </td>
+        <td class="text-left">
+            {{servicio.estado}}
+        </td>
+        <td class="text-right">
+            <button (click)="deleteServicio(servicio)" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-trash"></span> Borrar</button>
+            <button (click)="setServicioItemForEdit(servicio)" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-edit"></span> Editar</button>
+            <a [routerLink]="['/servicios', servicio.id]" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-search"></span> Detalles</a>
+        </td>
+    </tr>
+</table>

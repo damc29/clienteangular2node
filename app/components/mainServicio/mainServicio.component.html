@@ -1,0 +1,8 @@
+<div class="container">
+    <div class="jumbotron">
+        <servicioForm [servicioItem]="servicioSelectedFromList" (servicioUpdated)="updateServicio($event)" (servicioAdded)="addServicio($event)"></servicioForm>
+        <br/>
+        <servicioList [servicios]="servicios" (servicioSelected)="setCurrentlySelectedServicio($event)" (servicioDeleted)="deleteServicio($event)"></servicioList>
+    </div>
+</div>
+<!-- /.container -->

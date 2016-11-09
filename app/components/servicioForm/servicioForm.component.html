@@ -1,0 +1,34 @@
+<form #f="ngForm">
+
+    <div class="form-group">
+        <label for="servicioName">Nombre</label>
+        <input type="text" name="servicioName" class="form-control" id="servicioName" placeholder="Nombre servicio"
+            [(ngModel)]="currentServicio.nombre" required>
+            
+        <div *ngIf="f?.controls?.servicioName?.hasError('required') && (f?.controls?.servicioName?.dirty && !f.submitted)" class="alert alert-danger">
+            *
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="estado">Estado</label>
+        <input type="text" class="form-control" id="estado" placeholder="Estado" [(ngModel)]="currentServicio.estado"
+            required isNumber isInRange name="estado" #estado="ngModel">
+        
+        <div *ngIf="f?.controls?.estado?.hasError('required') && (f?.controls?.estado?.dirty && !f.submitted)" class="alert alert-danger">
+            *
+        </div>
+
+        <div *ngIf="f?.controls?.estado?.hasError('isNumber') && (f?.controls?.estado?.dirty && !f.submitted)" class="alert alert-danger">
+            Please enter a number
+        </div>
+
+        <div *ngIf="f?.controls?.estado?.hasError('isInRange') && (f?.controls?.estado?.dirty && !f.submitted)" class="alert alert-danger">
+            Please enter a valid number (Integer-Range)
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="descripcion">Descripcion</label>
+        <textarea name="descripcion" class="form-control" id="descripcion" placeholder="Descripcion servicio"></textarea>
+    </div>
+    <button type="submit" class="btn btn-default" (click)="AddOrUpdateServicio()" [disabled]="!f?.valid">Submit</button>
+</form>
